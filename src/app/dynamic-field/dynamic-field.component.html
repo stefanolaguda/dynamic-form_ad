@@ -6,6 +6,7 @@
       [formName]="formName"
       [field]="field"
     ></app-dynamic-input>
+    <app-dynamic-error [formName]="formName" [fieldName]="field.fieldName"></app-dynamic-error>
 
         <app-dynamic-input
       *ngSwitchCase="'number'"

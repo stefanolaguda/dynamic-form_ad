@@ -1,1 +1,9 @@
-<p>dynamic-error works!</p>
+<div
+  *ngIf="
+    formName.controls[fieldName].invalid && formName.controls[fieldName].touched
+  "
+  class="alert"
+>
+  <div *ngIf="formName.controls[fieldName].errors"></div>
+  * {{ fieldName }}
+</div>
