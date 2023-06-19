@@ -1,6 +1,7 @@
 # DynamicFormAd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+Studing dynamic form angular for Hastega's stage.
 
 ## Development server
 
