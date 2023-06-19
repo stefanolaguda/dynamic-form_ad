@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -30,6 +30,8 @@ export class DynamicFormComponent implements OnInit {
       const fieldProps = this.modelData[field];
       console.log('fieldProps', fieldProps); // qui mi passo l'oggetto di ogni campo
       console.log('field', field); // qui invece vedo le chiavi di ognuno degli oggetti
+
+      const validators = this.addValidator(fieldProps.rules);
       formGroupFields[field] = new FormControl(fieldProps.value);
       this.fields.push({ ...fieldProps, fieldName: field });
     }
@@ -41,5 +43,17 @@ export class DynamicFormComponent implements OnInit {
     );
 
     return formGroupFields;
+  }
+
+  addValidator(rules: { required: boolean }) {
+    const validators = Object.keys(rules).map((rule) => {
+      switch (rule) {
+        case 'required':
+          return Validators.required;
+        default:
+          return []; // se non c'è il validator inserito, allora mi ritorna indietro un array vuoto
+      }
+    });
+    return validators;
   }
 }

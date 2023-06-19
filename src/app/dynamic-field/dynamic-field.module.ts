@@ -9,10 +9,20 @@ import { DynamicSelectModule } from './dynamic-select/dynamic-select.module';
 import { DynamicInputComponent } from './dynamic-input/dynamic-input.component';
 import { DynamicCheckboxComponent } from './dynamic-checkbox/dynamic-checkbox.component';
 import { DynamicRadioComponent } from './dynamic-radio/dynamic-radio.component';
+import { DynamicErrorModule } from './dynamic-error/dynamic-error.module';
 
 @NgModule({
   declarations: [DynamicFieldComponent],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicCheckboxModule, DynamicInputModule, DynamicRadioModule, DynamicSelectModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DynamicCheckboxModule,
+    DynamicInputModule,
+    DynamicRadioModule,
+    DynamicSelectModule,
+    DynamicErrorModule,
+  ],
   exports: [DynamicFieldComponent],
 })
 export class DynamicFieldModule {}

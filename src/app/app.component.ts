@@ -12,31 +12,49 @@ export class AppComponent implements OnInit {
       type: 'text',
       value: '',
       label: 'FirstName',
+      rules: {
+        required: true,
+      },
     },
     lastname: {
       type: 'text',
       value: '',
       label: 'LastName',
+      rules: {
+        required: true,
+      },
     },
     address: {
       type: 'text',
       value: '',
       label: 'Address',
+      rules: {
+        required: false,
+      },
     },
     age: {
       type: 'number',
       value: '',
       label: 'Age',
+      rules: {
+        required: false,
+      },
     },
     birthDay: {
       type: 'date',
       value: '',
       label: 'Birthday',
+      rules: {
+        required: false,
+      },
     },
     typeBussines: {
       label: 'Bussines Type',
       value: 'premium',
       type: 'radio',
+      rules: {
+        required: false,
+      },
       options: [
         {
           label: 'Enterprise',
