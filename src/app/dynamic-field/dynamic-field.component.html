@@ -1,6 +1,8 @@
 <form [formGroup]="formName">
+  <ng-container *ngFor="let field of fields">
   <label>
     {{ field }}
   </label>
   <input type="text" [formControlName]="field" />
+  </ng-container>
 </form>

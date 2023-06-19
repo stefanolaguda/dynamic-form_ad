@@ -7,9 +7,9 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  registerForm!: FormGroup;
-  fields: string[] = [];
-  model = {
+  // registerForm!: FormGroup;
+  // fields: string[] = [];
+  modelData = {
     name: '',
     lastName: '',
     address: '',
@@ -19,25 +19,25 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.buildForm();
+    // this.buildForm();
+    // this.getFormControlsFields();
   }
 
-  buildForm() {
-    const formGroupFields: Record<string, FormControl> =
-      this.getFormControlsFields();
-    this.registerForm = new FormGroup(formGroupFields);
-  }
+  // buildForm() {
+  //   const formGroupFields: Record<string, FormControl> = this.getFormControlsFields();
+  //   this.registerForm = new FormGroup(formGroupFields);
+  // }
 
-  getFormControlsFields() {
-    const formGroupFields: Record<string, FormControl> = {};
+  // getFormControlsFields() {
+  //   const formGroupFields: Record<string, FormControl> = {};
 
-    for (const field of Object.keys(this.model)) {
-      formGroupFields[field] = new FormControl('');
-      this.fields.push(field);
-    }
+  //   for (const field of Object.keys(this.model)) {
+  //     formGroupFields[field] = new FormControl('');
+  //     this.fields.push(field);
+  //   }
 
-    console.log(formGroupFields);
+  //   console.log(formGroupFields);
 
-    return formGroupFields;
-  }
+  //   return formGroupFields;
+  // }
 }

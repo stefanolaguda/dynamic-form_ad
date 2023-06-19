@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./dynamic-field.component.scss'],
 })
 export class DynamicFieldComponent implements OnInit {
-  @Input() field!: string | number | null;
+  @Input() fields!: any;
   @Input() formName!: FormGroup<any>;
 
   constructor() {}

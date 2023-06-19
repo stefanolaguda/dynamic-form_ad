@@ -9,27 +9,28 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class DynamicFormComponent implements OnInit {
   dynamicFormGroup!: FormGroup;
   fields: string[] = [];
-  @Input() modelData = {};
+  @Input() modelData!: {}; 
 
   ngOnInit(): void {
-    // this.buildForm();
+    console.log(this.modelData);
+    this.buildForm();
   }
 
-  // buildForm() {
-  //   const formGroupFields: Record<string, FormControl> =
-  //     this.getFormControlsFields();
+  buildForm() {
+    const formGroupFields: Record<string, FormControl> =
+      this.getFormControlsFields();
 
-  //   this.dynamicFormGroup = new FormGroup(formGroupFields);
-  // }
+    this.dynamicFormGroup = new FormGroup(formGroupFields);
+  }
 
-  // getFormControlsFields() {
-  //   const formGroupFields: Record<string, FormControl> = {};
+  getFormControlsFields() {
+    const formGroupFields: Record<string, FormControl> = {};
 
-  //   for (const field of Object.keys(this.modelData)) {
-  //     formGroupFields[field] = new FormControl('');
-  //     this.fields.push(field);
-  //   }
+    for (const field of Object.keys(this.modelData)) {
+      formGroupFields[field] = new FormControl('');
+      this.fields.push(field);
+    }
 
-  //   return formGroupFields;
-  // }
+    return formGroupFields;
+  }
 }
