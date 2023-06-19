@@ -1,1 +1,14 @@
-<p>dynamic-radio works!</p>
+<form [formGroup]="formName">
+  <h3>
+    {{ field.label }}
+    <label *ngFor="let option of field.options">
+      <input
+        type="radio"
+        [name]="field.fieldName"
+        [formControlName]="field.fieldName"
+        [value]="option.value"
+      />
+      {{ option.label }}
+    </label>
+  </h3>
+</form>

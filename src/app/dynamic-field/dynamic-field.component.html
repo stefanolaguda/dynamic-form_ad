@@ -1,8 +1,45 @@
-<form [formGroup]="formName">
-  <ng-container *ngFor="let field of fields">
-  <label>
-    {{ field.label}}
-  </label>
-  <input type={{field.type}} [formControlName]="field.fieldName" />
+<ng-container *ngFor="let field of fields">
+  <ng-container [ngSwitch]="field.type">
+    <app-dynamic-input
+      *ngSwitchCase="'text'"
+      [formName]="formName"
+      [field]="field"
+    ></app-dynamic-input>
+
+        <app-dynamic-input
+      *ngSwitchCase="'number'"
+      [formName]="formName"
+      [field]="field"
+    ></app-dynamic-input>
+
+        <app-dynamic-input
+      *ngSwitchCase="'email'"
+      [formName]="formName"
+      [field]="field"
+    ></app-dynamic-input>
+
+        <app-dynamic-input
+      *ngSwitchCase="'date'"
+      [formName]="formName"
+      [field]="field"
+    ></app-dynamic-input>
+
+    <app-dynamic-select
+      *ngSwitchCase="'select'"
+      [formName]="formName"
+      [field]="field"
+    ></app-dynamic-select>
+
+    <app-dynamic-radio
+      *ngSwitchCase="'radio'"
+      [formName]="formName"
+      [field]="field"
+    ></app-dynamic-radio>
+
+    <app-dynamic-checkbox
+      *ngSwitchCase="'checkbox'"
+      [formName]="formName"
+      [field]="field"
+    ></app-dynamic-checkbox>
   </ng-container>
-</form>
+</ng-container>

@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamic-select',
   templateUrl: './dynamic-select.component.html',
-  styleUrls: ['./dynamic-select.component.scss']
+  styleUrls: ['./dynamic-select.component.scss'],
 })
-export class DynamicSelectComponent {
+export class DynamicSelectComponent implements OnInit {
+  @Input() formName!: FormGroup;
+  @Input() field: any;
 
+  constructor() {}
+  ngOnInit(): void {}
 }

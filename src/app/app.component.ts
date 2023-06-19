@@ -33,30 +33,52 @@ export class AppComponent implements OnInit {
       value: '',
       label: 'Birthday',
     },
+    typeBussines: {
+      label: 'Bussines Type',
+      value: 'premium',
+      type: 'radio',
+      options: [
+        {
+          label: 'Enterprise',
+          value: '1500',
+        },
+        {
+          label: 'Home',
+          value: '6',
+        },
+        {
+          label: 'Personal',
+          value: '1',
+        },
+      ],
+    },
+    newsletterIn: {
+      label: 'Suscribe to newsletter',
+      value: 'email',
+      type: 'checkbox',
+    },
+    suscriptionType: {
+      label: 'Suscription Type',
+      value: 'premium',
+      type: 'select',
+      options: [
+        {
+          label: 'Pick one',
+          value: '',
+        },
+        {
+          label: 'Premium',
+          value: 'premium',
+        },
+        {
+          label: 'Basic',
+          value: 'basic',
+        },
+      ],
+    },
   };
 
   constructor() {}
 
-  ngOnInit(): void {
-    // this.buildForm();
-    // this.getFormControlsFields();
-  }
-
-  // buildForm() {
-  //   const formGroupFields: Record<string, FormControl> = this.getFormControlsFields();
-  //   this.registerForm = new FormGroup(formGroupFields);
-  // }
-
-  // getFormControlsFields() {
-  //   const formGroupFields: Record<string, FormControl> = {};
-
-  //   for (const field of Object.keys(this.model)) {
-  //     formGroupFields[field] = new FormControl('');
-  //     this.fields.push(field);
-  //   }
-
-  //   console.log(formGroupFields);
-
-  //   return formGroupFields;
-  // }
+  ngOnInit(): void {}
 }
