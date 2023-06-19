@@ -20,15 +20,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    this.getFormControlsFields();
   }
 
   buildForm() {
-    this.registerForm = new FormGroup({
-      name: new FormControl(''),
-      lastName: new FormControl(''),
-      age: new FormControl(''),
-    });
+    const formGroupFields: Record<string, FormControl> =
+      this.getFormControlsFields();
+    this.registerForm = new FormGroup(formGroupFields);
   }
 
   getFormControlsFields() {
