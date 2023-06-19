@@ -12,5 +12,7 @@ export class DynamicFieldComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('dynamic field, fields:', this.fields);
+  }
 }

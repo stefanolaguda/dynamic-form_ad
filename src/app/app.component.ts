@@ -7,13 +7,32 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  // registerForm!: FormGroup;
-  // fields: string[] = [];
   modelData = {
-    name: '',
-    lastName: '',
-    address: '',
-    age: '',
+    firstname: {
+      type: 'text',
+      value: '',
+      label: 'FirstName',
+    },
+    lastname: {
+      type: 'text',
+      value: '',
+      label: 'LastName',
+    },
+    address: {
+      type: 'text',
+      value: '',
+      label: 'Address',
+    },
+    age: {
+      type: 'number',
+      value: '',
+      label: 'Age',
+    },
+    birthDay: {
+      type: 'date',
+      value: '',
+      label: 'Birthday',
+    },
   };
 
   constructor() {}
