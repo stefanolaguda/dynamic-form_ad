@@ -7,11 +7,14 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  constructor() {}
+
   modelData = {
     firstname: {
       type: 'text',
       value: '',
       label: 'FirstName',
+      triggerOn: 'blur',
       rules: {
         required: true,
       },
@@ -20,6 +23,7 @@ export class AppComponent implements OnInit {
       type: 'text',
       value: '',
       label: 'LastName',
+      triggerOn: 'blur',
       rules: {
         required: true,
       },
@@ -28,6 +32,7 @@ export class AppComponent implements OnInit {
       type: 'text',
       value: '',
       label: 'Address',
+      triggerOn: 'blur',
       rules: {
         required: false,
       },
@@ -36,6 +41,7 @@ export class AppComponent implements OnInit {
       type: 'number',
       value: '',
       label: 'Age',
+      triggerOn: 'blur',
       rules: {
         required: false,
       },
@@ -95,8 +101,6 @@ export class AppComponent implements OnInit {
       ],
     },
   };
-
-  constructor() {}
 
   ngOnInit(): void {}
 }
