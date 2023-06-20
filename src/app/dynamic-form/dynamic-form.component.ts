@@ -3,8 +3,6 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
-  FormGroupDirective,
-  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -48,24 +46,12 @@ export class DynamicFormComponent implements OnInit {
 
     for (const field of Object.keys(this.modelData)) {
       const fieldProps = this.modelData[field];
-      // console.log('fieldProps', fieldProps); qui mi passo l'oggetto di ogni campo
-      // console.log('field', field); qui invece vedo le chiavi di ognuno degli oggetti
-
-      // const validators: ValidatorFn[] = this.addValidator(
-      //   fieldProps.rules
-      // );
 
       const validators: ValidatorFn[] = ([] as ValidatorFn[]).concat(
         ...this.addValidator(fieldProps.rules)
       );
 
       console.log('validators', validators);
-
-      // const validators2: (
-      //   | never[]
-      //   | ((control: AbstractControl<any, any>) => ValidationErrors | null)
-      // )[] = this.addValidator(fieldProps.rules);
-      // console.log('validators 2', validators2);
 
       formGroupFields[field] = new FormControl(fieldProps.value, {
         validators: validators?.length > 0 ? validators : null,
@@ -97,5 +83,9 @@ export class DynamicFormComponent implements OnInit {
       }
     });
     return validators;
+  }
+
+  onSubmit() {
+    console.log(this.dynamicFormGroup.value);
   }
 }

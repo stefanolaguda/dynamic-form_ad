@@ -1,1 +1,7 @@
-<app-dynamic-field [fields]="fields" [formName]="dynamicFormGroup"></app-dynamic-field>
+<form (ngSubmit)="onSubmit()">
+  <app-dynamic-field
+    [fields]="fields"
+    [formName]="dynamicFormGroup"
+  ></app-dynamic-field>
+  <button type="submit">Confirm</button>
+</form>
