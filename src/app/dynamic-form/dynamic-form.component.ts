@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -21,6 +27,7 @@ export class DynamicFormComponent implements OnInit {
       this.getFormControlsFields();
 
     this.dynamicFormGroup = new FormGroup(formGroupFields);
+    console.log('dynamicFormGroup', this.dynamicFormGroup);
   }
 
   getFormControlsFields() {
@@ -28,11 +35,13 @@ export class DynamicFormComponent implements OnInit {
 
     for (const field of Object.keys(this.modelData)) {
       const fieldProps = this.modelData[field];
-      console.log('fieldProps', fieldProps); // qui mi passo l'oggetto di ogni campo
-      console.log('field', field); // qui invece vedo le chiavi di ognuno degli oggetti
+      // console.log('fieldProps', fieldProps); qui mi passo l'oggetto di ogni campo
+      // console.log('field', field); qui invece vedo le chiavi di ognuno degli oggetti
 
-      const validators = this.addValidator(fieldProps.rules);
-      formGroupFields[field] = new FormControl(fieldProps.value);
+      const validators: ValidationErrors | null = this.addValidator(
+        fieldProps.rules
+      );
+      formGroupFields[field] = new FormControl(fieldProps.value, validators);
       this.fields.push({ ...fieldProps, fieldName: field });
     }
 
@@ -46,6 +55,10 @@ export class DynamicFormComponent implements OnInit {
   }
 
   addValidator(rules: { required: boolean }) {
+    if (!rules) {
+      return [];
+    }
+
     const validators = Object.keys(rules).map((rule) => {
       switch (rule) {
         case 'required':

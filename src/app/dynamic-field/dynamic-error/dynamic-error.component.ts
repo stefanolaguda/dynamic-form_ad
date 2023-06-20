@@ -10,6 +10,11 @@ export class DynamicErrorComponent implements OnInit {
   @Input() formName!: FormGroup;
   @Input() fieldName!: string;
 
-  constructor() {}
-  ngOnInit(): void {}
+  constructor() {
+  
+  }
+  ngOnInit(): void {
+      console.log('dynamic-error', this.formName);
+      console.log(this.fieldName);
+  }
 }
