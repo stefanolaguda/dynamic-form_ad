@@ -4,7 +4,7 @@
   "
   class="alert"
 >
-  <!-- <div *ngIf="formName.controls[fieldName].errors.required">
-    * {{ fieldName }}
-  </div> -->
+  <div *ngIf="formName.controls[fieldName].errors?.['required']">
+    * Devi inserire il {{ fieldName }}
+  </div>
 </div>
