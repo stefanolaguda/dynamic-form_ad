@@ -6,21 +6,24 @@
       [formName]="formName"
       [field]="field"
     ></app-dynamic-input>
-    <app-dynamic-error [formName]="formName" [fieldName]="field.fieldName"></app-dynamic-error>
+    <app-dynamic-error
+      [formName]="formName"
+      [fieldName]="field.fieldName"
+    ></app-dynamic-error>
 
-        <app-dynamic-input
+    <app-dynamic-input
       *ngSwitchCase="'number'"
       [formName]="formName"
       [field]="field"
     ></app-dynamic-input>
 
-        <app-dynamic-input
+    <app-dynamic-input
       *ngSwitchCase="'email'"
       [formName]="formName"
       [field]="field"
     ></app-dynamic-input>
 
-        <app-dynamic-input
+    <app-dynamic-input
       *ngSwitchCase="'date'"
       [formName]="formName"
       [field]="field"
@@ -45,3 +48,11 @@
     ></app-dynamic-checkbox>
   </ng-container>
 </ng-container>
+
+<br />
+<br />
+<hr />
+<hr />
+<br /><br />
+
+<ng-container #dynamicInputContainer></ng-container>
