@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
+  FormGroupDirective,
   ValidationErrors,
   ValidatorFn,
   Validators,
@@ -17,6 +18,8 @@ export class DynamicFormComponent implements OnInit {
   fields: string[] | Record<string, any> = [];
   @Input() modelData!: Record<string, any>;
 
+  constructor(){}
+
   ngOnInit(): void {
     console.log(this.modelData);
     this.buildForm();
@@ -27,6 +30,9 @@ export class DynamicFormComponent implements OnInit {
       this.getFormControlsFields();
 
     this.dynamicFormGroup = new FormGroup(formGroupFields);
+
+    // this.formGroupDirective.addFormGroup = this.dynamicFormGroup;
+
     console.log('dynamicFormGroup', this.dynamicFormGroup);
   }
 
