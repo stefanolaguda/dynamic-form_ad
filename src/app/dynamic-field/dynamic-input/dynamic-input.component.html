@@ -4,3 +4,15 @@
   </label>
   <input type="{{ field.type }}" [formControlName]="field.fieldName" />
 </form>
+<!-- <div
+  *ngIf="
+    formName.controls[field.fieldName].invalid && formName.controls[field.fieldName].touched
+  "
+  class="alert"
+>
+  <div *ngIf="formName.controls[field.fieldName].errors?.['required']">
+    * Devi inserire il {{ field.fieldName }}
+  </div>
+</div> -->
+
+<app-dynamic-error [formName]="formName" [fieldName]="field.fieldName"></app-dynamic-error>
