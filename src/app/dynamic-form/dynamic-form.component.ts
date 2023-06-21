@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormControl,
   FormGroup,
+  FormGroupDirective,
+  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -20,14 +21,8 @@ export class DynamicFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // console.log(this.modelData);
+    console.log(this.modelData);
     this.buildForm();
-
-    this.dynamicFormGroup.controls['firstname'].valueChanges.subscribe(
-      (event) => {
-        console.log(event);
-      }
-    );
   }
 
   buildForm() {
@@ -46,17 +41,13 @@ export class DynamicFormComponent implements OnInit {
 
     for (const field of Object.keys(this.modelData)) {
       const fieldProps = this.modelData[field];
+      // console.log('fieldProps', fieldProps); qui mi passo l'oggetto di ogni campo
+      // console.log('field', field); qui invece vedo le chiavi di ognuno degli oggetti
 
-      const validators: ValidatorFn[] = ([] as ValidatorFn[]).concat(
-        ...this.addValidator(fieldProps.rules)
+      const validators: ValidationErrors | null = this.addValidator(
+        fieldProps.rules
       );
-
-      console.log('validators', validators);
-
-      formGroupFields[field] = new FormControl(fieldProps.value, {
-        validators: validators?.length > 0 ? validators : null,
-        updateOn: fieldProps.triggerOn || 'change',
-      });
+      formGroupFields[field] = new FormControl(fieldProps.value, validators);
       this.fields.push({ ...fieldProps, fieldName: field });
     }
 
